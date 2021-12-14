@@ -33,17 +33,15 @@ public class ContactDATA {
 	public String tostring() {
 		return String.format(FirstName + "," + LastName + "," + Address + "," + City + "," + State + "," + ZipCode + ","
 				+ PhoneNumber + "," + Email);
-
 	}
 
 	public String getFirstName() {
 		return FirstName;
 	}
 
-	public void setFirstName(String firstName) {
-		FirstName = firstName;
-	}
-
+	// public void set FirstName2 String newFirstName) {
+	// FirstName = newFirstName;
+	// }
 	public String getLastName() {
 		return LastName;
 	}
@@ -102,8 +100,13 @@ public class ContactDATA {
 
 	@Override
 	public String toString() {
+		return "ContactDATA [FirstName=" + FirstName + ", LastName=" + LastName + ", Address=" + Address + ", City="
+				+ City + ", State=" + State + ", Email=" + Email + ", ZipCode=" + ZipCode + ", PhoneNumber="
+				+ PhoneNumber + "]";
+	}
+
+	public void setFirstName(java.lang.String newFirstName) {
 		// TODO Auto-generated method stub
-		return String.format(getFirstName() + "" + getLastName() + "" + getAddress() + "" + getCity() + "" + getState()
-				+ "" + getEmail() + "" + getZipCode() + "" + getPhoneNumber());
+
 	}
 }
