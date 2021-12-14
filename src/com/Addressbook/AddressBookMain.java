@@ -203,28 +203,51 @@ public class AddressBookMain {
 		String city = input.next();
 		System.out.println(" Now Enter the State Name - ");
 		String state = input.next();
-		
+
 		Dictionary DictforCityState = new Hashtable();
-		
+
 		for (AddressBListEx Adbookname : ListAddressBookname) {
 			for (ContactDATA User : Adbookname.contact) {
 				if (city.equals(User.City)) {
-					DictforCityState.put(User.FirstName,city);
-					
-					if (state.equals(User.State)) {
-						DictforCityState.put(User.FirstName,state);
+					DictforCityState.put(User.FirstName, city);
 
-						System.out.println("\n -> The Contact you are Searching by City - "+city+" &  State - "+state+" Is - "+User.FirstName+". \n");
+					if (state.equals(User.State)) {
+						DictforCityState.put(User.FirstName, state);
+
+						System.out.println("\n -> The Contact you are Searching by City - " + city + " &  State - "
+								+ state + " Is - " + User.FirstName + ". \n");
 					} else {
 						continue;
 					}
 				}
 			}
-			System.out.println("Showing persons by State- "+state+" City- "+city);
+			System.out.println("Showing persons by State- " + state + " City- " + city);
 			System.out.println("The Persons with Same City and State Are :- ");
-			for(Enumeration i =DictforCityState.keys();i.hasMoreElements();) {
+			for (Enumeration i = DictforCityState.keys(); i.hasMoreElements();) {
 				System.out.println(i.nextElement());
 			}
+		}
+	}
+
+	public void CountbyCityandState() {
+		System.out.println("Input the name of City And State to Count Persons - ");
+		System.out.println(" Enter the City Name - ");
+		String city = input.next();
+		int Countcity = 0;
+		System.out.println(" Enter the State Name - ");
+		String state = input.next();
+		int Countstate = 0;
+
+		for (AddressBListEx Adbookname : ListAddressBookname) {
+			for (ContactDATA User : Adbookname.contact) {
+				if (city.equals(User.City)) {
+					Countcity++;
+					if (state.equals(User.State)) {
+						Countstate++;
+					}
+				}
+			}
+			System.out.println("Showing persons by State- " + city + " " + Countcity + " " + state + " " + Countstate);
 		}
 	}
 
@@ -281,7 +304,7 @@ public class AddressBookMain {
 				System.out.println(" 5.Display the Address Book.");
 				System.out.println(" 6.Search Person By City or State");
 				System.out.println(" 7.Exit from the Adressbook Application");
-				
+
 				System.out.println();// Space
 				System.out.println("Enter your choice - ");
 				int UserChoice = input.nextInt();
@@ -303,8 +326,8 @@ public class AddressBookMain {
 					obj.DisplayAddressBook();
 					break;
 				case 6:
-                    obj.SearchPersoninContact();
-                    break;
+					obj.SearchPersoninContact();
+					break;
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
