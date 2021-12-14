@@ -120,6 +120,24 @@ public class AddressBookMain {
 		}
 	}
 
+	public void DeleteContact() {
+		System.out.println("Delete Contact enter  linked Email to Delete the Contact");
+		String DeleteContact = input.next();
+
+		for (int i = 0; i < contactBook.size(); i++) {
+			String CheckingMail = contactBook.get(i).getEmail();
+
+			if (DeleteContact.equalsIgnoreCase(CheckingMail)) {
+				contactBook.remove(i);
+				System.out.println("Contact Deleted Suucessfully");
+				break;
+
+			} else {
+				continue;
+			}
+		}
+	}
+
 	public static void main(String[] args) {
 		System.out.println("Welcome To AddressBook");
 		AddressBookMain obj = new AddressBookMain();
@@ -127,7 +145,6 @@ public class AddressBookMain {
 		obj.DisplayContacts();
 		obj.AddContact();
 		obj.EditContact();
-
+		obj.DeleteContact();
 	}
-
 }

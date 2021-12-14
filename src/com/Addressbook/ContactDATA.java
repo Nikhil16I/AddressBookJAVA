@@ -39,9 +39,6 @@ public class ContactDATA {
 		return FirstName;
 	}
 
-	// public void set FirstName2 String newFirstName) {
-	// FirstName = newFirstName;
-	// }
 	public String getLastName() {
 		return LastName;
 	}
