@@ -9,30 +9,30 @@ public class AddressBookMain {
 
 	public void AddContact() {
 		System.out.print("Enter First Name = ");
-		String FirstName = input.next();
+		String firstName = input.next();
 
 		System.out.print("Enter Last Name = ");
-		String LastName = input.next();
+		String lastName = input.next();
 
 		System.out.print("Enter Address = ");
-		String Add = input.next();
+		String address = input.next();
 
 		System.out.print("Enter City = ");
-		String City = input.next();
+		String city = input.next();
 
 		System.out.print("Enter State = ");
-		String State = input.next();
+		String state = input.next();
 
 		System.out.print("Enter Zip Code = ");
-		int ZipCode = input.nextInt();
+		int zipCode = input.nextInt();
 
 		System.out.print("Enter Phone Number = ");
-		int PhoneNumber = input.nextInt();
+		int phoneNumber = input.nextInt();
 
 		System.out.print("Enter E-mail = ");
-		String Email = input.next();
+		String email = input.next();
 
-		ContactDATA contact = new ContactDATA(FirstName, LastName, Add, City, State, ZipCode, PhoneNumber, Email);
+		ContactDATA contact = new ContactDATA(firstName, lastName, address, city, state, zipCode, phoneNumber, email);
 		contactBook.add(contact);
 
 		System.out.println("Contact added Successfully.");
@@ -138,13 +138,58 @@ public class AddressBookMain {
 		}
 	}
 
+	public void AddMultipleContact() {
+		System.out.println("Enter Number of Multiple Contacts to be added");
+		int multi = input.nextInt();
+		for (int i = 1; i <= multi; i++) {
+			AddContact();
+		}
+	}
+
 	public static void main(String[] args) {
-		System.out.println("Welcome To AddressBook");
+		System.out.println("Welcome To AddressBook ");
 		AddressBookMain obj = new AddressBookMain();
-		obj.AddContact();
-		obj.DisplayContacts();
-		obj.AddContact();
-		obj.EditContact();
-		obj.DeleteContact();
+
+		System.out.print("Enter an option AddressBook Application ,Enter=1 ,Exit=2  ");
+		int enterExit = input.nextInt();
+		if (enterExit == 1) {
+
+			while (enterExit != 2) {
+				System.out.println("Choose which operation you want to perform from below list = ");
+				System.out.println("1.Add Contact.");
+				System.out.println("2.Edit Contact");
+				System.out.println("3.Delete Contact");
+				System.out.println("4.Display Address Book.");
+				System.out.println("5.Exit from the Application");
+
+				System.out.println("Enter your choice ");
+				int userChoice = input.nextInt();
+
+				switch (userChoice) {
+				case 1:
+					obj.AddMultipleContact();
+					break;
+				case 2:
+					obj.EditContact();
+					break;
+				case 3:
+					obj.DeleteContact();
+					break;
+				case 4:
+					obj.DisplayContacts();
+					break;
+				default:
+					System.out.println("Press valid button To choose option ");
+				}
+				if (userChoice == 5) {
+					System.out.println("You are Exited from Addressbook");
+					break;
+				}
+			}
+		} else if (enterExit == 2) {
+			System.out.println("Exited from Addressbook");
+		} else {
+			System.out.println("Press Valid button Enter=1 ,Exit=2");
+		}
 	}
 }
