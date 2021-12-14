@@ -50,8 +50,8 @@ public class AddressBookMain {
 
 						for (ContactDATA Contactname : Adbookname.contact) {
 						}
-					    }
-				        }
+					}
+				}
 
 				System.out.println("\n -Contact added Successfully.\n");
 			} else {
@@ -194,6 +194,26 @@ public class AddressBookMain {
 		}
 	}
 
+	public void SearchPersoninContact() {
+		System.out.println("Input the name of City And State to search person in the List ");
+		System.out.println(" Enter the City Name - ");
+		String city = input.next();
+		System.out.println(" Now Enter the State Name - ");
+		String state = input.next();
+		for (AddressBListEx Adbookname : ListAddressBookname) {
+			for (ContactDATA User : Adbookname.contact) {
+				if (city.equals(User.City)) {
+					if (state.equals(User.State)) {
+						System.out.println("\n -> The Contact you are Searching by City - "+city+" &  State - "+state+" Is - "+User.FirstName+". \n");
+					} else {
+						continue;
+					}
+				}
+			}
+		}
+
+	}
+
 	public boolean Uniquename(String AddressBookName) {
 		if (ListAddressBookname.isEmpty()) {
 			return true;
@@ -245,7 +265,9 @@ public class AddressBookMain {
 				System.out.println(" 3.Delete the Contact");
 				System.out.println(" 4.Add New AddressBook in List");
 				System.out.println(" 5.Display the Address Book.");
-				System.out.println(" 6.Exit from the Adressbook Application");
+				System.out.println(" 6.Search Person By City or State");
+				System.out.println(" 7.Exit from the Adressbook Application");
+				
 				System.out.println();// Space
 				System.out.println("Enter your choice - ");
 				int UserChoice = input.nextInt();
@@ -266,11 +288,13 @@ public class AddressBookMain {
 				case 5:
 					obj.DisplayAddressBook();
 					break;
-
+				case 6:
+                    obj.SearchPersoninContact();
+                    break;
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (UserChoice == 6) {
+				if (UserChoice == 8) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}
