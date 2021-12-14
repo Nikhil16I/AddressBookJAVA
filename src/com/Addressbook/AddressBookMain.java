@@ -1,6 +1,9 @@
 package com.Addressbook;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.Scanner;
 
 public class AddressBookMain {
@@ -200,18 +203,29 @@ public class AddressBookMain {
 		String city = input.next();
 		System.out.println(" Now Enter the State Name - ");
 		String state = input.next();
+		
+		Dictionary DictforCityState = new Hashtable();
+		
 		for (AddressBListEx Adbookname : ListAddressBookname) {
 			for (ContactDATA User : Adbookname.contact) {
 				if (city.equals(User.City)) {
+					DictforCityState.put(User.FirstName,city);
+					
 					if (state.equals(User.State)) {
+						DictforCityState.put(User.FirstName,state);
+
 						System.out.println("\n -> The Contact you are Searching by City - "+city+" &  State - "+state+" Is - "+User.FirstName+". \n");
 					} else {
 						continue;
 					}
 				}
 			}
+			System.out.println("Showing persons by State- "+state+" City- "+city);
+			System.out.println("The Persons with Same City and State Are :- ");
+			for(Enumeration i =DictforCityState.keys();i.hasMoreElements();) {
+				System.out.println(i.nextElement());
+			}
 		}
-
 	}
 
 	public boolean Uniquename(String AddressBookName) {
