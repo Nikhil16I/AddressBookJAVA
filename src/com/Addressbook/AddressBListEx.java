@@ -25,5 +25,4 @@ public class AddressBListEx {
 	public String toString() {
 		return "AddresBListEx - AddressBookName = " + AddressBookName + "  " + "Contacts- " + contact;
 	}
-
 }
