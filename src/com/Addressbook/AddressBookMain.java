@@ -303,7 +303,8 @@ public class AddressBookMain {
 				System.out.println(" 4.Add New AddressBook in List");
 				System.out.println(" 5.Display the Address Book.");
 				System.out.println(" 6.Search Person By City or State");
-				System.out.println(" 7.Exit from the Adressbook Application");
+				System.out.println(" 7.Count Contacts By City or State");
+				System.out.println(" 8.Exit from the Adressbook Application");
 
 				System.out.println();// Space
 				System.out.println("Enter your choice - ");
@@ -327,6 +328,9 @@ public class AddressBookMain {
 					break;
 				case 6:
 					obj.SearchPersoninContact();
+					break;
+				case 7:
+					obj.CountbyCityandState();
 					break;
 				default:
 					System.out.println("Press valid button To choose option ");
