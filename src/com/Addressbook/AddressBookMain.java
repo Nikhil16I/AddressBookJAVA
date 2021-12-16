@@ -25,7 +25,8 @@ public class AddressBookMain {
 				System.out.println(" 6.Search Person By City or State");
 				System.out.println(" 7.Count Contact By City or State");
 				System.out.println(" 8. Sort Contact by Name");
-				System.out.println(" 9.Exit from the Adressbook Application");
+				System.out.println(" 9. Sort Contact by State And City");
+				System.out.println(" 10.Exit from the Adressbook Application");
 
 				System.out.println();// Space
 				System.out.println("Enter your choice - ");
@@ -56,10 +57,12 @@ public class AddressBookMain {
 				case 8:
 					obj.ContactSorting();
 					break;
+				case 9:
+					obj.SortContactByLocation();
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (UserChoice == 9) {
+				if (UserChoice == 10) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}
