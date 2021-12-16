@@ -251,31 +251,60 @@ public class AddressBookFunctions {
 			System.out.println("Showing persons by State- " + city + " " + Countcity + " " + state + " " + Countstate);
 		}
 	}
-	
+
+	public void SortContactByLocation() {
+		AddressBListEx addressBListEx = FindAddressBook();
+		int Press = input.nextInt();
+		switch (Press) {
+		case 1:
+			addressBListEx.contact.stream()
+					.sorted((contact1, contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
+					.forEach(contact -> System.out.println(contact));
+			break;
+		case 2:
+			addressBListEx.contact.stream()
+					.sorted((contact1, contact2) -> contact1.getCity().compareTo(contact2.getCity()))
+					.forEach(contact -> System.out.println(contact));
+			break;
+		case 3:
+			addressBListEx.contact.stream()
+					.sorted((contact1, contact2) -> contact1.getState().compareTo(contact2.getState()))
+					.forEach(contact -> System.out.println(contact));
+			break;
+		case 4:
+			addressBListEx.contact.stream()
+					.sorted((contact1, contact2) -> Integer.valueOf(contact1.getZipCode()).compareTo(contact2.getZipCode()))
+					.forEach(contact -> System.out.println(contact));
+			break;
+		default:
+			 System.out.println("Press Valid Button Only");
+
+		}
+	}
+
 	public void ContactSorting() {
 		AddressBListEx adbook = FindAddressBook();
 		adbook.contact.stream()
-		.sorted((contact1,contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
-		.forEach(contact -> System.out.println(contact));
-				
-		
+				.sorted((contact1, contact2) -> contact1.getFirstName().compareTo(contact2.getFirstName()))
+				.forEach(contact -> System.out.println(contact));
+
 	}
+
 	public AddressBListEx FindAddressBook() {
-		if(ListAddressBookname.isEmpty()) {
+		if (ListAddressBookname.isEmpty()) {
 			System.out.println("Create an AddresBook First :-");
 			return null;
 		}
 		System.out.println("Enter the Name of new Addressbook");
 		String newaddedADBook = input.next();
-		for(AddressBListEx addressBListEx : ListAddressBookname) {
-			if(newaddedADBook.equals(addressBListEx.AddressBookName)) {
+		for (AddressBListEx addressBListEx : ListAddressBookname) {
+			if (newaddedADBook.equals(addressBListEx.AddressBookName)) {
 				return addressBListEx;
 			}
 		}
-	System.out.println("This AddressBook Doesnt Exist");
-	return null;
+		System.out.println("This AddressBook Doesnt Exist");
+		return null;
 	}
-	
 
 	public boolean Uniquename(String AddressBookName) {
 		if (ListAddressBookname.isEmpty()) {
