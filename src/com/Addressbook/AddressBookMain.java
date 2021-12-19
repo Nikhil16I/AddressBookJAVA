@@ -3,6 +3,8 @@ package com.Addressbook;
 import java.io.IOException;
 import java.util.Scanner;
 
+import com.opencsv.exceptions.CsvValidationException;
+
 public class AddressBookMain {
 
 	public static void main(String[] args)  {
@@ -29,7 +31,9 @@ public class AddressBookMain {
 				System.out.println(" 9. Sort Contact by State And City");
 				System.out.println(" 10.Write To IO File");
 				System.out.println(" 11.Read The IO File");
-				System.out.println(" 12.Exit from the Adressbook Application");
+				System.out.println(" 12.Write To CSV File");
+				System.out.println(" 13.Read The CSV File");
+				System.out.println(" 14.Exit from the Adressbook Application");
 
 				System.out.println();// Space
 				System.out.println("Enter your choice - ");
@@ -73,11 +77,31 @@ public class AddressBookMain {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				    break; 
+				    break;
+				case 12:
+					try {
+						obj.WriteCSVfile();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				    break;
+				case 13:
+					try {
+						obj.ReadCSVFile();
+					} catch (CsvValidationException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+					
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (UserChoice == 12) {
+				if (UserChoice == 14) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}
