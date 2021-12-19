@@ -1,10 +1,11 @@
 package com.Addressbook;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class AddressBookMain {
 
-	public static void main(String[] args) {
+	public static void main(String[] args)  {
 		Scanner input = new Scanner(System.in);
 		System.out.println("Welcome To AddressBook ");
 		System.out.println();// space
@@ -26,7 +27,9 @@ public class AddressBookMain {
 				System.out.println(" 7.Count Contact By City or State");
 				System.out.println(" 8. Sort Contact by Name");
 				System.out.println(" 9. Sort Contact by State And City");
-				System.out.println(" 10.Exit from the Adressbook Application");
+				System.out.println(" 10.Write To IO File");
+				System.out.println(" 11.Read The IO File");
+				System.out.println(" 12.Exit from the Adressbook Application");
 
 				System.out.println();// Space
 				System.out.println("Enter your choice - ");
@@ -59,10 +62,22 @@ public class AddressBookMain {
 					break;
 				case 9:
 					obj.SortContactByLocation();
+					break;
+				case 10:
+					obj.WriteToFile();
+				    break;
+				case 11:
+					try {
+						obj.ReadTheFile();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				    break; 
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (UserChoice == 10) {
+				if (UserChoice == 12) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}

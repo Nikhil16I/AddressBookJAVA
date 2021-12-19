@@ -1,10 +1,10 @@
-package com.Addressbook;
+package com.Addressbook.entity;
 
 import java.util.ArrayList;
 
 public class AddressBListEx {
-	String AddressBookName;
-	ArrayList<ContactDATA> contact;
+	public String AddressBookName;
+	public ArrayList<ContactDATA> contact;
 
 
 	public AddressBListEx(String AddressBookName) {

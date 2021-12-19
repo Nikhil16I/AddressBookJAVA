@@ -1,16 +1,26 @@
 package com.Addressbook;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Scanner;
+
+import com.Addressbook.entity.AddressBListEx;
+import com.Addressbook.entity.ContactDATA;
 
 public class AddressBookFunctions {
 
 	static Scanner input = new Scanner(System.in);
 
 	static ArrayList<AddressBListEx> ListAddressBookname = new ArrayList<>();
+	File file = new File("C:/Users/DELL/eclipse-workspace/AddressBookJAVA/src/com/IOfile-Addressbook.txt");
 
 	public void AddContact() {
 		if (ListAddressBookname.isEmpty()) {
@@ -272,12 +282,12 @@ public class AddressBookFunctions {
 					.forEach(contact -> System.out.println(contact));
 			break;
 		case 4:
-			addressBListEx.contact.stream()
-					.sorted((contact1, contact2) -> Integer.valueOf(contact1.getZipCode()).compareTo(contact2.getZipCode()))
+			addressBListEx.contact.stream().sorted(
+					(contact1, contact2) -> Integer.valueOf(contact1.getZipCode()).compareTo(contact2.getZipCode()))
 					.forEach(contact -> System.out.println(contact));
 			break;
 		default:
-			 System.out.println("Press Valid Button Only");
+			System.out.println("Press Valid Button Only");
 
 		}
 	}
@@ -338,5 +348,33 @@ public class AddressBookFunctions {
 		for (AddressBListEx DisplayADbook : ListAddressBookname) {
 			System.out.println(DisplayADbook);
 		}
+	}
+
+	public void ReadTheFile() throws IOException {
+		System.out.println("\n Yes, Reading the context of the file ");
+		System.out.println("Done ! , Showing Details\n");
+		FileReader OurIOfile = new FileReader(file);
+		int i;
+		while ((i = OurIOfile.read()) != -1)
+			System.out.print((char) i);
+		OurIOfile.close();
+	}
+	
+
+	public void WriteToFile() {
+		FileWriter fileWriter;
+		try {
+			fileWriter = new FileWriter(file);
+			String OurIOfile = ListAddressBookname.toString();
+
+			for (int i = 0; i < OurIOfile.length(); i++) {
+				fileWriter.write(OurIOfile.charAt(i));
+			}
+			fileWriter.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("\n Context Has been Written To IO files \n Press '11' to read Context \n");
 	}
 }
