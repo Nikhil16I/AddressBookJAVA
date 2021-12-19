@@ -1,15 +1,15 @@
-package com.Addressbook;
+package com.Addressbook.entity;
 
 public class ContactDATA {
 
-	String FirstName;
-	String LastName;
-	String Address;
-	String City;
-	String State;
-	String Email;
-	int ZipCode;
-	long PhoneNumber;
+	public String FirstName;
+	public String LastName;
+	public String Address;
+	public String City;
+	public String State;
+	public String Email;
+	public int ZipCode;
+	public long PhoneNumber;
 
 	public ContactDATA(String firstName, String lastName, String address, String city, String state, int zipCode,
 			long phoneNumber, String email) {
