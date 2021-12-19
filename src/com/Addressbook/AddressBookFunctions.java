@@ -5,15 +5,21 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 import com.Addressbook.entity.AddressBListEx;
 import com.Addressbook.entity.ContactDATA;
+import com.opencsv.CSVReader;
+import com.opencsv.CSVWriter;
+import com.opencsv.exceptions.CsvValidationException;
 
 public class AddressBookFunctions {
 
@@ -21,6 +27,7 @@ public class AddressBookFunctions {
 
 	static ArrayList<AddressBListEx> ListAddressBookname = new ArrayList<>();
 	File file = new File("C:/Users/DELL/eclipse-workspace/AddressBookJAVA/src/com/IOfile-Addressbook.txt");
+	File CSVfile = new File("C:/Users/DELL/eclipse-workspace/AddressBookJAVA/src/com/IOfile-Addressbook.csv");
 
 	public void AddContact() {
 		if (ListAddressBookname.isEmpty()) {
@@ -359,7 +366,6 @@ public class AddressBookFunctions {
 			System.out.print((char) i);
 		OurIOfile.close();
 	}
-	
 
 	public void WriteToFile() {
 		FileWriter fileWriter;
@@ -377,4 +383,46 @@ public class AddressBookFunctions {
 		}
 		System.out.println("\n Context Has been Written To IO files \n Press '11' to read Context \n");
 	}
+
+	public void WriteCSVfile() throws IOException {
+		FileWriter fileWriter;
+		try {
+			FileWriter outputFile = new FileWriter(CSVfile);
+			CSVWriter csvWriter = new CSVWriter(outputFile);
+
+			for (AddressBListEx addressBookList : ListAddressBookname) {
+				for (ContactDATA User : addressBookList.contact) {
+					String[] contact = {
+							addressBookList.getAddressBookName() + "," + User.getFirstName() + "," + User.getLastName()
+									+ "," + User.getAddress() + "," + User.getCity() + "," + User.getState() + ","
+									+ String.valueOf(User.getPhoneNumber()) + "," + User.getEmail() + "\n" };
+					csvWriter.writeNext(contact);
+				}
+			}
+			csvWriter.close();
+			System.out.println("\n Context Has been Written To CSV files \n Press '13' to read Context \n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void ReadCSVFile() throws IOException, CsvValidationException {
+		System.out.println("\n Yes, Reading the context of the file ");
+		System.out.println("Done ! , Showing Details\n");
+		FileReader fileReader = new FileReader(CSVfile);
+		CSVReader  csvReader = new CSVReader(fileReader);
+		String[] nextString;
+		try {
+		while ((nextString = csvReader.readNext()) != null) {
+			if(nextString != null) {
+				System.out.print(Arrays.toString(nextString));
+		   }
+		  }
+		}catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 }	
 }
