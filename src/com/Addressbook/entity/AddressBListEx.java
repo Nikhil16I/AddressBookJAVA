@@ -23,6 +23,6 @@ public class AddressBListEx {
 
 	@Override
 	public String toString() {
-		return "AddresBListEx - AddressBookName = " + AddressBookName + "  " + "Contacts- " + contact;
+		return "AddressBookName = " + AddressBookName + "  " + "Contacts- " + contact;
 	}
  }

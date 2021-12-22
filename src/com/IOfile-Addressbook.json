@@ -1,0 +1,27 @@
+[
+  {
+    "AddressBookName": "MyContacts",
+    "contact": [
+      {
+        "FirstName": "Nikhil",
+        "LastName": "I",
+        "Address": "RahulPark",
+        "City": "Nagpur",
+        "State": "Maharashtra",
+        "Email": "Nikhil@gmail.com",
+        "ZipCode": 444444,
+        "PhoneNumber": 9123456789
+      },
+      {
+        "FirstName": "Adesh",
+        "LastName": "Jain",
+        "Address": "CIDCO",
+        "City": "Aurangabad",
+        "State": "Maharashtra",
+        "Email": "Adesh@gmail.com",
+        "ZipCode": 444444,
+        "PhoneNumber": 9123456789
+      }
+    ]
+  }
+]

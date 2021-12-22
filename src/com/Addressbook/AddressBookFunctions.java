@@ -17,6 +17,9 @@ import java.util.Scanner;
 
 import com.Addressbook.entity.AddressBListEx;
 import com.Addressbook.entity.ContactDATA;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonWriter;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
@@ -28,6 +31,7 @@ public class AddressBookFunctions {
 	static ArrayList<AddressBListEx> ListAddressBookname = new ArrayList<>();
 	File file = new File("C:/Users/DELL/eclipse-workspace/AddressBookJAVA/src/com/IOfile-Addressbook.txt");
 	File CSVfile = new File("C:/Users/DELL/eclipse-workspace/AddressBookJAVA/src/com/IOfile-Addressbook.csv");
+	File JSONfile = new File("C:/Users/DELL/eclipse-workspace/AddressBookJAVA/src/com/IOfile-Addressbook.json");
 
 	public void AddContact() {
 		if (ListAddressBookname.isEmpty()) {
@@ -69,8 +73,9 @@ public class AddressBookFunctions {
 					if (Adbookname.AddressBookName.contains(Bookname)) {
 						Adbookname.contact.add(contactx);
 
-						for (ContactDATA Contactname : Adbookname.contact) {
-						}
+						/*
+						 * for (ContactDATA Contactname : Adbookname.contact) { }
+						 */
 					}
 				}
 
@@ -412,17 +417,41 @@ public class AddressBookFunctions {
 		System.out.println("\n Yes, Reading the context of the file ");
 		System.out.println("Done ! , Showing Details\n");
 		FileReader fileReader = new FileReader(CSVfile);
-		CSVReader  csvReader = new CSVReader(fileReader);
+		CSVReader csvReader = new CSVReader(fileReader);
 		String[] nextString;
 		try {
-		while ((nextString = csvReader.readNext()) != null) {
-			if(nextString != null) {
-				System.out.print(Arrays.toString(nextString));
-		   }
-		  }
-		}catch (IOException e) {
+			while ((nextString = csvReader.readNext()) != null) {
+				if (nextString != null) {
+					System.out.print(Arrays.toString(nextString));
+				}
+			}
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	 }	
+	}
+
+	public void WirteToJsonFile() throws IOException {
+
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		String string = gson.toJson(ListAddressBookname);
+		FileWriter outputFile = new FileWriter(JSONfile);
+
+		outputFile.write(string);
+		outputFile.close();
+
+		System.out.println("\n Context Has been Written To JSON files \n Press '15' to read Context \n");	}
+
+	public void Read_JSON_File() throws IOException {
+
+		System.out.println("\n Yes, Reading the context of the file ");
+		System.out.println("Done !, Showing Details\n");
+
+		FileReader fileReader = new FileReader(JSONfile);
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		Object object = gson.fromJson(fileReader, Object.class);
+		System.out.println(object);
+
+	}
 }

@@ -33,7 +33,9 @@ public class AddressBookMain {
 				System.out.println(" 11.Read The IO File");
 				System.out.println(" 12.Write To CSV File");
 				System.out.println(" 13.Read The CSV File");
-				System.out.println(" 14.Exit from the Adressbook Application");
+				System.out.println(" 14.Write To JSON File");
+				System.out.println(" 15.Read The JSON File");
+				System.out.println(" 16.Exit from the Adressbook Application");
 
 				System.out.println();// Space
 				System.out.println("Enter your choice - ");
@@ -96,12 +98,27 @@ public class AddressBookMain {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					break;
+				case 14:
+					try {
+						obj.WirteToJsonFile();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				    break;
+				case 15:
+					try {
+						obj.Read_JSON_File();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				break;
 					
 				default:
 					System.out.println("Press valid button To choose option ");
 				}
-				if (UserChoice == 14) {
+				if (UserChoice == 16) {
 					System.out.println("You are Exited from Addressbook");
 					break;
 				}
